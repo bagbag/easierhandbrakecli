@@ -32,7 +32,7 @@ if [ -e "$2" ]; then
 	fi
 fi
 
-parameters="-i '$1' -o '$2' -X $maxwidth -Y $maxheight -f mp4 -O -e x264 -q $crf --vfr -E av_aac --audio-copy-mask aac --audio-fallback av_aac --encoder-preset=$encoderpreset --encoder-tune=film"
+parameters="-i '$1' -o '$2' -X $maxwidth -Y $maxheight -f mp4 -O -e x264 -q $crf --vfr -a 1,2,3,4,5,6,7,8,9 -E av_aac --audio-copy-mask aac --audio-fallback av_aac -s 1,2,3,4,5,6,7,8,9 --encoder-preset=$encoderpreset --encoder-tune=film"
 
 if [ $denoise == true ]; then
     parameters+=" --denoise=$denoisepreset"
