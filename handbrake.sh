@@ -8,8 +8,16 @@ encoderpreset=medium
 denoise=true
 denoisepreset=light
 
+if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
+	abspath=$(cd ${0%/*} && echo $PWD/${0##*/})
+	wget https://raw.githubusercontent.com/bagbag/easierhandbrakecli/master/handbrake.sh -O "$abspath"
+	echo "hopefully updated!"
+	exit
+fi
+
 if [ "$1" == "-h" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$1" == "" ]; then
-  echo "Usage: ./`basename $0` INPUTFILE OUTPUTFILE [STARTTIME IN SECONDS] [DURATION IN SECONDS]"
+  echo "Usage: ./`basename $0` inputfile outputfile [starttime in seconds] [duration in seconds]"
+  echo "	or -u|--update to download latest version from github"
   exit 0
 fi
 
