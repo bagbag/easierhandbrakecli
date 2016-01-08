@@ -7,6 +7,7 @@ maxheight=1080
 encoderpreset=medium
 denoise=true
 denoisepreset=light
+niceness=8 #priority from -20 (highest) to 19 (lowest)
 
 if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
 	abspath=$(cd ${0%/*} && echo $PWD/${0##*/})
@@ -54,4 +55,4 @@ if [ "$4" != "" ]; then
     parameters+=" --stop-at duration:$4"
 fi
 
-eval "time HandBrakeCLI $parameters"
+eval "time nice -n $niceness HandBrakeCLI $parameters"
